@@ -10,14 +10,17 @@ namespace Lostinyou\Module;
 
 
 use Illuminate\Support\ServiceProvider;
+use Lostinyou\Module\Commands\ControllerCommand;
 
 class ModuleServiceProvider extends ServiceProvider
 {
+    protected $defer = true;
 
     protected function configPath()
     {
         return __DIR__ . '/../config/module.php';
     }
+
     /**
      * Bootstrap services.
      *
@@ -26,9 +29,11 @@ class ModuleServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../config/module.php' => config_path('module.php')
+            $this->configPath() => config_path('module.php')
         ], 'config');
+        $this->commands('Lostinyou\Module\Commands\ControllerCommand');
     }
+
     /**
      * Register services.
      *
@@ -39,5 +44,8 @@ class ModuleServiceProvider extends ServiceProvider
         $this->app->singleton('module', function () {
             return new Module();
         });
+
+
+
     }
 }
