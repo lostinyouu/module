@@ -10,11 +10,9 @@ namespace Lostinyou\Module;
 
 
 use Illuminate\Support\ServiceProvider;
-use Lostinyou\Module\Commands\ControllerCommand;
 
 class ModuleServiceProvider extends ServiceProvider
 {
-    protected $defer = true;
 
     protected function configPath()
     {
