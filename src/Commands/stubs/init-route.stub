@@ -1,0 +1,2 @@
+<?php
+// Route::group([], base_path('module-path/routes.php'));

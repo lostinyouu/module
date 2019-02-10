@@ -8,8 +8,14 @@
 
 namespace Lostinyou\Module;
 
-
 use Illuminate\Support\ServiceProvider;
+use Lostinyou\Module\Commands\ControllerCommand;
+use Lostinyou\Module\Commands\InitModuleCommand;
+use Lostinyou\Module\Commands\InitRouteCommand;
+use Lostinyou\Module\Commands\InitRouteServiceProviderCommand;
+use Lostinyou\Module\Commands\ModelCommand;
+use Lostinyou\Module\Commands\ModuleCommand;
+use Lostinyou\Module\Commands\RouteCommand;
 
 class ModuleServiceProvider extends ServiceProvider
 {
@@ -29,7 +35,14 @@ class ModuleServiceProvider extends ServiceProvider
         $this->publishes([
             $this->configPath() => config_path('module.php')
         ], 'config');
-        $this->commands('Lostinyou\Module\Commands\ControllerCommand');
+
+        $this->commands(InitModuleCommand::class);
+        $this->commands(InitRouteCommand::class);
+        $this->commands(InitRouteServiceProviderCommand::class);
+        $this->commands(ModuleCommand::class);
+        $this->commands(ControllerCommand::class);
+        $this->commands(ModelCommand::class);
+        $this->commands(RouteCommand::class);
     }
 
     /**
@@ -42,7 +55,6 @@ class ModuleServiceProvider extends ServiceProvider
         $this->app->singleton('module', function () {
             return new Module();
         });
-
 
 
     }

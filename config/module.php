@@ -2,7 +2,11 @@
 
 return [
 
-    'controller_path' => '',
+    'controller_root_namespace' => 'App\Modules',
 
-    'model_path'      => ''
+    'model_root_namespace' => 'App\Modules',
+
+    'route_root_namespace' => 'App\Modules',
+
+    'init_route_root_namespace' => 'routes'
 ];

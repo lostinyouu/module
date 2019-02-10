@@ -1,26 +1,19 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: sunlong
+ * Date: 2019-02-10
+ * Time: 15:08
+ */
 
 namespace Lostinyou\Module\Commands;
 
 
 use Illuminate\Console\GeneratorCommand;
 
-
-class ControllerCommand extends GeneratorCommand
+class ModelCommand extends GeneratorCommand
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected $name = 'module:controller';
-
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = '创建一个控制器';
+    protected $name = 'module:model';
 
 
     /**
@@ -30,9 +23,14 @@ class ControllerCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__ . '/stubs/controller.stub';
+        return __DIR__ . '/stubs/model.stub';
     }
-
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = '创建一个模型';
     /**
      * Get the default namespace for the class.
      *
@@ -43,18 +41,11 @@ class ControllerCommand extends GeneratorCommand
     {
 
         $rootNamespace = config('module.controller_root_namespace')
-            . "\\" . trim($this->argument('name')) . "\\" . 'Controller';
+            . "\\" . trim($this->argument('name'));
 
         return str_replace([
             "\\",
             '/'
         ], '\\', $rootNamespace);
     }
-
-    protected function getNameInput()
-    {
-        return trim($this->argument('name')).'Controller';
-    }
-
 }
-
