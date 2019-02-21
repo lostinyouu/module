@@ -1,5 +1,16 @@
 <?php
 
-Route::group(['prefix' => 'DummyClass', 'namespace' => 'App\Modules\DummyClass\Controllers'], function () {
-
+Route::group(['namespace' => 'App\Modules\DummyClass\Controllers'], function () {
+    // 列表
+    Route::get('DummyRouteName', 'DummyClassController@index')->name('DummyRouteName.index');
+    // 单条详情
+    Route::get('DummyRouteName/{DummyRouteModelName}', 'DummyClassController@show')->name('DummyRouteName.show');
+    // 添加
+    Route::post('DummyRouteName', 'DummyClassController@store')->name('DummyRouteName.store');
+    // 编辑
+    Route::put('DummyRouteName/{DummyRouteModelName}', 'DummyClassController@update')->name('DummyRouteName.update');
+    // 删除
+    Route::delete('DummyRouteName/{DummyRouteModelName}', 'DummyClassController@destroy')->name('DummyRouteName.destroy');
+    // 批量删除
+    Route::post('DummyRouteName/batch-destroy', 'DummyClassController@batchDestroy')->name('DummyRouteName.batch-destroy');
 });

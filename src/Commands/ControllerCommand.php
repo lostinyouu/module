@@ -43,7 +43,7 @@ class ControllerCommand extends GeneratorCommand
     {
 
         $rootNamespace = config('module.controller_root_namespace')
-            . "\\" . trim($this->argument('name')) . "\\" . 'Controller';
+            . "\\" . trim($this->argument('name')) . "\\" . 'Controllers';
 
         return str_replace([
             "\\",
@@ -53,7 +53,7 @@ class ControllerCommand extends GeneratorCommand
 
     protected function getNameInput()
     {
-        return trim($this->argument('name')).'Controller';
+        return trim($this->argument('name')) . 'Controller';
     }
 
 }

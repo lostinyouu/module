@@ -7,14 +7,35 @@ use DummyRootNamespaceHttp\Controllers\Controller;
 
 class DummyClass extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+        echo 'index';
+    }
+
+    public function show()
+    {
+        echo 'show';
+    }
+
+    public function store()
+    {
+        echo 'store';
+    }
+
+    public function update()
+    {
+        echo 'update';
+    }
+
+    public function destroy()
+    {
+        echo 'destroy';
+    }
+
+    public function batchDestroy()
+    {
+        echo 'batchDestroy';
     }
 
 }

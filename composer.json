@@ -14,8 +14,13 @@
             "Lostinyou\\Module\\": "src/"
         }
     },
-    "require": {},
+    "require": {
+        "league/fractal": "^0.17.0"
+    },
     "extra": {
+        "branch-alias": {
+            "dev-master": "1.11"
+        },
         "laravel": {
             "providers": [
                 "Lostinyou\\Module\\ModuleServiceProvider"
