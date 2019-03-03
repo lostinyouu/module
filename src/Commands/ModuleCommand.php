@@ -38,6 +38,11 @@ class ModuleCommand extends Command
                 'name'    => $this->argument('name')
             ]);
         }
+        if ($this->confirm('Would you like to create a Transformer? [y|N]')) {
+            $this->call('module:transformer', [
+                'name'    => $this->argument('name')
+            ]);
+        }
         if ($this->confirm('Would you like to create a Route? [y|N]')) {
             $this->call('module:route', [
                 'name'    => $this->argument('name')

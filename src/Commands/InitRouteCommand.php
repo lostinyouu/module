@@ -31,7 +31,7 @@ class InitRouteCommand extends GeneratorCommand
     protected function qualifyClass($name)
     {
 
-        $name = config('module.init_route_root_namespace') . "\\" . $name;
+        $name = 'routes' . "\\" . $name;
 
         return str_replace([
             "\\",

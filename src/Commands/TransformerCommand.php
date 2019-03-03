@@ -1,4 +1,10 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: sunlong
+ * Date: 2019-02-21
+ * Time: 17:31
+ */
 
 namespace Lostinyou\Module\Commands;
 
@@ -6,23 +12,27 @@ namespace Lostinyou\Module\Commands;
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Support\Str;
 
-
-class ControllerCommand extends GeneratorCommand
+class TransformerCommand extends GeneratorCommand
 {
+
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $name = 'module:controller';
+    protected $name = 'module:transformer';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = '创建一个控制器';
+    protected $description = '创建一个资源转换器';
 
+    /**文件夹
+     * @var string
+     */
+    protected $folderName = 'Transformer';
 
     /**
      * Get the stub file for the generator.
@@ -31,7 +41,7 @@ class ControllerCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__ . '/stubs/controller.stub';
+        return __DIR__ . '/stubs/transformer.stub';
     }
 
     /**
@@ -44,7 +54,7 @@ class ControllerCommand extends GeneratorCommand
     {
 
         $rootNamespace = config('module.root_namespace')
-            . "\\" . trim($this->argument('name')) . "\\" . 'Controllers';
+            . "\\" . trim($this->argument('name')) . "\\" . $this->folderName;
 
         return str_replace([
             "\\",
@@ -62,7 +72,7 @@ class ControllerCommand extends GeneratorCommand
     {
         $name = Str::replaceFirst($this->rootNamespace(), '', $name);
 
-        $name .= 'Controller';
+        $name .= 'Transformer';
 
         return $this->laravel['path'] . '/' . str_replace('\\', '/', $name) . '.php';
     }
@@ -77,15 +87,15 @@ class ControllerCommand extends GeneratorCommand
     protected function replaceNamespace(&$stub, $name)
     {
         $stub = str_replace(
-            ['DummyNamespace', 'DummyRootNamespace', 'DummyClassName', 'DummyCamelModelName', 'DummyModelName'],
-            [$this->getNamespace($name), $this->rootNamespace(), $this->getClassName(), $this->getCamelModelName(), $this->getNameInput()],
+            ['DummyNamespace', 'DummyRootNamespace','DummyModelCamelName'],
+            [$this->getNamespace($name), $this->rootNamespace(),$this->getCamelModelName()],
             $stub
         );
 
         return $this;
     }
 
-    /**隐式绑定模型模型，小驼峰写法
+    /**模型小驼峰变量
      *
      * @return string
      */
@@ -93,16 +103,4 @@ class ControllerCommand extends GeneratorCommand
     {
         return Str::camel($this->getNameInput());
     }
-
-    /**
-     * 返回类名
-     *
-     * @return string
-     */
-    protected function getClassName()
-    {
-        return $this->getNameInput() . 'Controller';
-    }
-
 }
-

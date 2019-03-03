@@ -3,8 +3,32 @@
 namespace DummyNamespace;
 
 use Illuminate\Database\Eloquent\Model;
+use Lostinyou\Module\Traits\ModelTraitTransformer;
 
 class DummyClass extends Model
 {
-    //
+
+    use ModelTraitTransformer;
+
+    /**
+     * 定义状态格式化后文字
+     *
+     * @var array
+     */
+    public static $statusText = [
+//        '1' => '未发布',
+//        '2' => '已发布',
+    ];
+
+
+    /**
+     * 返回格式化后的状态文字
+     *
+     * $this->status 需要转化的字段
+     * @return mixed
+     */
+    public function statusFormat()
+    {
+        return self::$statusText[$this->status];
+    }
 }

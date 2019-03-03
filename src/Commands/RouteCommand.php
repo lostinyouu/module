@@ -32,7 +32,7 @@ class RouteCommand extends GeneratorCommand
     protected function getDefaultNamespace($rootNamespace)
     {
 
-        $rootNamespace = config('module.route_root_namespace');
+        $rootNamespace = config('module.root_namespace');
 
         return str_replace([
             "\\",

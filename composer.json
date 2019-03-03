@@ -15,9 +15,7 @@
         }
     },
     "require": {
-        "php": ">=7",
-        "illuminate/console": "^5.5,<5.8",
-        "league/fractal": "^0.17.0"
+        "php": ">=7"
     },
     "extra": {
         "branch-alias": {

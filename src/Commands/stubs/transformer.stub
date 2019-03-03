@@ -1,0 +1,25 @@
+<?php
+
+namespace App\Modules\DummyClass\Transformers;
+
+use App\Modules\DummyClass\DummyClass;
+use League\Fractal\TransformerAbstract;
+
+class DummyClassTransformer extends TransformerAbstract
+{
+
+    /**Transform a collection.
+     *
+     * @param DummyClass $DummyModelCamelName
+     * @return array
+     */
+    public function transform(DummyClass $DummyModelCamelName)
+    {
+        return [
+            'id'         => $DummyModelCamelName->id,
+            //
+            'created_at' => $DummyModelCamelName->createdAtFormat(),
+            'updated_at' => $DummyModelCamelName->updatedAtFormat()
+        ];
+    }
+}

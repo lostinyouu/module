@@ -16,6 +16,7 @@ use Lostinyou\Module\Commands\InitRouteServiceProviderCommand;
 use Lostinyou\Module\Commands\ModelCommand;
 use Lostinyou\Module\Commands\ModuleCommand;
 use Lostinyou\Module\Commands\RouteCommand;
+use Lostinyou\Module\Commands\TransformerCommand;
 
 class ModuleServiceProvider extends ServiceProvider
 {
@@ -43,6 +44,7 @@ class ModuleServiceProvider extends ServiceProvider
         $this->commands(ControllerCommand::class);
         $this->commands(ModelCommand::class);
         $this->commands(RouteCommand::class);
+        $this->commands(TransformerCommand::class);
     }
 
     /**

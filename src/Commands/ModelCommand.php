@@ -40,7 +40,7 @@ class ModelCommand extends GeneratorCommand
     protected function getDefaultNamespace($rootNamespace)
     {
 
-        $rootNamespace = config('module.controller_root_namespace')
+        $rootNamespace = config('module.root_namespace')
             . "\\" . trim($this->argument('name'));
 
         return str_replace([

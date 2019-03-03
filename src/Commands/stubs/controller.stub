@@ -3,19 +3,24 @@
 namespace DummyNamespace;
 
 use Illuminate\Http\Request;
+use App\Modules\DummyModelName\DummyModelName;
+use Lostinyou\Response\ResponseFactory;
+use App\Modules\DummyModelName\Transformers\DummyModelNameTransformer;
 use DummyRootNamespaceHttp\Controllers\Controller;
 
-class DummyClass extends Controller
+class DummyClassName extends Controller
 {
 
     public function index()
     {
-        echo 'index';
+        $DummyCamelModelName = DummyModelName::paginate();
+
+        return ResponseFactory::make()->collection($DummyCamelModelName, new DummyModelNameTransformer());
     }
 
-    public function show()
+    public function show(DummyModelName $DummyCamelModelName)
     {
-        echo 'show';
+        return ResponseFactory::make()->item($DummyCamelModelName, new DummyModelNameTransformer());
     }
 
     public function store()

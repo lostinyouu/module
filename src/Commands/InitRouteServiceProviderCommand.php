@@ -11,6 +11,7 @@ namespace Lostinyou\Module\Commands;
 
 use Illuminate\Console\GeneratorCommand;
 use Symfony\Component\Console\Input\InputOption;
+
 class InitRouteServiceProviderCommand extends GeneratorCommand
 {
     protected $name = 'module:init-route-provider';
